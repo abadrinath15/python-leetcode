@@ -5,9 +5,9 @@ from typing import List, Optional
 
 
 class ListNode:
-    def __init__(self, x):
-        self.val = x
-        self.next: Optional[ListNode] = None
+    def __init__(self, val: int = 0, next: Optional[ListNode] = None):
+        self.val = val
+        self.next = next
 
     def __iter__(self):
         while self:

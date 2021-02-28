@@ -1,6 +1,7 @@
 import sys
 from typing import Dict, Optional, Deque, List
 import math
+import tqdm
 
 
 sys.path.append(r"/Users/aditya/Documents/Python/Leetcode/")
@@ -114,6 +115,36 @@ class Solution:
                 nums[ind] = 0
                 while nums[zero_ind] != 0 and zero_ind < len(nums):
                     zero_ind += 1
+
+    def wordPattern(self, pattern: str, s: str) -> bool:
+        if len(pattern) != len(s_list := s.split(" ")):
+            return False
+        else:
+            pattern_dict = {}
+            seen_words = set()
+            for letter, word in zip(pattern, s_list):
+                if letter in pattern_dict:
+                    if pattern_dict[letter] != word:
+                        return False
+                elif word in seen_words:
+                    return False
+                pattern_dict[letter] = word
+                seen_words.add(word)
+            return True
+
+    def canWinNim(self, n: int) -> bool:
+        # The DP approach was nice, but it'll runtime overflow because their
+        # test case is huge. Can prove by induction that win == (n% 4 != 0)
+        return n % 4 != 0
+
+
+def _build_up_nim(self, n: int) -> bool:
+    if n < 4:
+        return True
+    results = [True] * 3
+    for game_n in tqdm.tqdm(range(3, n)):
+        results.append(sum(results[game_n - 3 : game_n]) < 3)
+    return results[-1]
 
 
 def _removeElements_iter(head: ListNode, val: int) -> Optional[ListNode]:

@@ -187,6 +187,42 @@ class TestMoveZeros:
         assert input_list == output_list
 
 
+class TestWordPattern:
+    def test_wp_1(self, get_sln):
+        pattern = "abba"
+        s = "dog cat cat dog"
+        assert get_sln.wordPattern(pattern, s) == True
+
+    def test_wp_2(self, get_sln):
+        pattern = "abba"
+        s = "dog cat cat fish"
+        assert get_sln.wordPattern(pattern, s) == False
+
+    def test_wp_3(self, get_sln):
+        pattern = "aaaa"
+        s = "dog cat cat dog"
+        assert get_sln.wordPattern(pattern, s) == False
+
+    def test_wp_4(self, get_sln):
+        pattern = "abba"
+        s = "dog dog dog dog"
+        assert get_sln.wordPattern(pattern, s) == False
+
+
+class TestCanWinNim:
+    def test_cwn_1(self, get_sln):
+        assert get_sln.canWinNim(1) == True
+
+    def test_cwn_2(self, get_sln):
+        assert get_sln.canWinNim(4) == False
+
+    def test_cwn_3(self, get_sln):
+        assert get_sln.canWinNim(5) == True
+
+    def test_cwn_4(self, get_sln):
+        assert get_sln.canWinNim(1348820612) == False
+
+
 @pytest.fixture
 def get_sln():
     return Solution()
