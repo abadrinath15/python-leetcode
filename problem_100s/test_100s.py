@@ -149,6 +149,30 @@ class TestLetterCombinations:
         assert get_sln.letterCombinations(digits) == output
 
 
+class TestThreeSums:
+    def test_ts_1(self, get_sln):
+        input_list = [-1, 0, 1, 2, -1, -4]
+        output_lists = [[-1, -1, 2], [-1, 0, 1]]
+        assert sorted(get_sln.threeSum(input_list)) == sorted(output_lists)
+
+
+class TestGenerateParenthesis:
+    def test_gp_1(self, get_sln):
+        n = 1
+        correct = sorted(["()"])
+        assert sorted(get_sln.generateParenthesis(n)) == correct
+
+    def test_gp_2(self, get_sln):
+        n = 2
+        correct = sorted(["(())", "()()"])
+        assert sorted(get_sln.generateParenthesis(n)) == correct
+
+    def test_gp_3(self, get_sln):
+        n = 3
+        correct = sorted(["((()))", "(()())", "(())()", "()(())", "()()()"])
+        assert sorted(get_sln.generateParenthesis(n)) == correct
+
+
 @pytest.fixture
 def get_sln():
     return Solution()
